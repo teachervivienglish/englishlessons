@@ -1,0 +1,1796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duda's Café English Class 🧁</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+:root {
+  --lav1:   #f3eeff;
+  --lav2:   #e8daff;
+  --lav3:   #d4b8ff;
+  --lav4:   #b68fff;
+  --purple: #8b5cf6;
+  --deep:   #6d28d9;
+  --deeper: #4c1d95;
+  --pink:   #e879f9;
+  --pink2:  #f0abfc;
+  --pink3:  #fdf4ff;
+  --mint:   #a7f3d0;
+  --mint2:  #d1fae5;
+  --yellow: #fde68a;
+  --yellow2:#fffbeb;
+  --coral:  #fca5a5;
+  --text:   #3b1f6e;
+  --textd:  #1e0a40;
+  --gray:   #f5f3ff;
+  --shadow: 0 6px 24px rgba(139,92,246,0.18);
+  --shadowb: 0 4px 16px rgba(139,92,246,0.28);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(135deg, #f8f4ff 0%, #fdf0ff 50%, #f0f4ff 100%);
+  color: var(--text);
+  min-height: 100vh;
+  font-size: 16px;
+}
+.app { max-width: 1060px; margin: 0 auto; padding: 20px 14px 60px; }
+
+/* ═══ HEADER ═══ */
+.header {
+  background: linear-gradient(135deg, var(--deep) 0%, #a855f7 50%, var(--pink) 100%);
+  border-radius: 28px;
+  padding: 32px 24px 28px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(109,40,217,0.4);
+  margin-bottom: 22px;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: '☕ 🧁 🍰 🥐 🍵 🧃 🫖 🍪';
+  position: absolute; top: 8px; left: 0; right: 0;
+  font-size: 22px; letter-spacing: 8px; opacity: 0.2;
+  white-space: nowrap; overflow: hidden;
+}
+.header h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 48px; color: white;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.2);
+  line-height: 1; margin-bottom: 8px;
+}
+.header h1 span { color: var(--yellow); }
+.header-sub {
+  font-size: 16px; color: rgba(255,255,255,0.88);
+  font-weight: 600; letter-spacing: 0.5px;
+}
+.header-badges {
+  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+  margin-top: 16px;
+}
+.badge {
+  background: rgba(255,255,255,0.22);
+  border: 2px solid rgba(255,255,255,0.4);
+  color: white; border-radius: 999px;
+  padding: 6px 16px; font-size: 13px; font-weight: 700;
+  backdrop-filter: blur(4px);
+}
+
+/* ═══ PROGRESS ═══ */
+.progress-wrap {
+  background: white; border-radius: 20px;
+  padding: 16px 22px; margin-bottom: 18px;
+  box-shadow: var(--shadow);
+  border: 2px solid var(--lav3);
+}
+.progress-bar { background: var(--lav2); border-radius: 999px; height: 14px; overflow: hidden; margin: 8px 0; }
+.progress-fill {
+  background: linear-gradient(90deg, var(--purple), var(--pink));
+  height: 100%; border-radius: 999px;
+  transition: width 0.5s ease;
+  position: relative;
+}
+.progress-fill::after {
+  content: '⭐'; position: absolute; right: -4px; top: -8px; font-size: 18px;
+}
+.xp-counter {
+  font-family: 'Fredoka One', cursive;
+  font-size: 18px; color: var(--deep);
+}
+.xp-counter span { color: var(--pink); }
+
+/* ═══ TABS ═══ */
+.tabs {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-bottom: 20px; justify-content: center;
+}
+.tab-btn {
+  padding: 10px 18px; border-radius: 999px;
+  border: 2.5px solid var(--lav3);
+  background: white; font-weight: 800; font-size: 14px;
+  cursor: pointer; color: var(--purple);
+  transition: all 0.2s ease; font-family: 'Nunito', sans-serif;
+}
+.tab-btn:hover { border-color: var(--purple); background: var(--lav1); }
+.tab-btn.active {
+  background: linear-gradient(135deg, var(--deep), var(--purple));
+  color: white; border-color: var(--deep);
+  box-shadow: 0 4px 14px rgba(109,40,217,0.35);
+}
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ═══ CARDS ═══ */
+.card {
+  background: white; border-radius: 22px;
+  border: 2.5px solid var(--lav3);
+  padding: 24px; margin-bottom: 18px;
+  box-shadow: var(--shadow);
+}
+.card-purple { border-color: var(--purple); background: linear-gradient(160deg,white,var(--lav1)); }
+.card-pink   { border-color: var(--pink);   background: linear-gradient(160deg,white,var(--pink3)); }
+.card-mint   { border-color: #6ee7b7;       background: linear-gradient(160deg,white,var(--mint2)); }
+.card-yellow { border-color: #f59e0b;        background: linear-gradient(160deg,white,var(--yellow2)); }
+.card h2 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 26px; color: var(--deep); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+}
+.card h3 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 19px; color: var(--purple); margin: 16px 0 8px;
+}
+.section-label {
+  font-size: 11px; font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--purple); margin-bottom: 6px;
+}
+
+/* ═══ VOCAB VISUAL GRID ═══ */
+.vocab-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  gap: 14px; margin-top: 14px;
+}
+.vocab-card {
+  background: white; border: 2.5px solid var(--lav3);
+  border-radius: 18px; padding: 14px 10px;
+  text-align: center; cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 3px 10px rgba(139,92,246,0.1);
+}
+.vocab-card:hover { transform: translateY(-4px); box-shadow: var(--shadowb); border-color: var(--purple); }
+.vocab-card .emoji { font-size: 42px; display: block; margin-bottom: 6px; }
+.vocab-card .word { font-weight: 800; font-size: 15px; color: var(--deep); display: block; }
+.vocab-card .pron {
+  font-size: 12px; color: var(--purple); font-style: italic;
+  display: block; margin-top: 2px; background: var(--lav1);
+  border-radius: 6px; padding: 2px 4px; margin-top: 4px;
+}
+.vocab-card .pt  { font-size: 11px; color: #888; display: block; margin-top: 3px; }
+.vocab-card.clicked { background: var(--lav2); border-color: var(--purple); }
+
+/* ═══ PRONUNCIATION BLOCK ═══ */
+.pron-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 12px; margin-top: 12px;
+}
+.pron-item {
+  background: var(--lav1); border: 2px solid var(--lav3);
+  border-radius: 14px; padding: 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+.pron-item .big-emoji { font-size: 30px; flex-shrink: 0; }
+.pron-item .pron-info { flex: 1; }
+.pron-item .pron-word { font-weight: 800; font-size: 15px; color: var(--deep); }
+.pron-item .pron-ipa  { font-size: 13px; color: var(--purple); font-family: monospace; background: white; border-radius: 6px; padding: 2px 6px; display: inline-block; margin: 2px 0; }
+.pron-item .pron-tip  { font-size: 12px; color: #666; }
+.speak-btn {
+  background: var(--purple); color: white; border: none;
+  border-radius: 999px; padding: 5px 12px; font-size: 12px;
+  font-weight: 700; cursor: pointer; margin-top: 4px;
+  font-family: 'Nunito', sans-serif; transition: all 0.2s;
+}
+.speak-btn:hover { background: var(--deep); transform: scale(1.05); }
+
+/* ═══ DIALOGUE ═══ */
+.dialogue-box {
+  background: var(--lav1); border-radius: 18px;
+  padding: 20px; margin: 12px 0; border: 2px solid var(--lav3);
+}
+.dialogue-line {
+  display: flex; gap: 12px; align-items: flex-start;
+  margin-bottom: 14px;
+}
+.dialogue-line:last-child { margin-bottom: 0; }
+.dialogue-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.av-staff { background: linear-gradient(135deg, var(--purple), var(--pink)); }
+.av-duda  { background: linear-gradient(135deg, var(--mint), #059669); }
+.dialogue-bubble {
+  flex: 1; border-radius: 16px;
+  padding: 10px 14px; font-size: 15px; font-weight: 600;
+  line-height: 1.5; position: relative;
+}
+.bubble-staff { background: white; border: 2px solid var(--lav3); color: var(--textd); }
+.bubble-duda  { background: linear-gradient(135deg, var(--purple), var(--deep)); color: white; }
+.bubble-pt { font-size: 12px; opacity: 0.7; font-style: italic; margin-top: 4px; display: block; }
+.dialogue-label { font-size: 11px; font-weight: 800; color: var(--purple); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+
+/* ═══ PHRASE CARDS ═══ */
+.phrase-list { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.phrase-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; align-items: center;
+  background: var(--lav1); border-radius: 14px; padding: 12px 16px;
+  border: 2px solid var(--lav2);
+}
+.phrase-row .en { font-weight: 800; color: var(--deep); font-size: 15px; }
+.phrase-row .pt { color: #777; font-size: 13px; font-style: italic; }
+.phrase-row .pron-badge {
+  font-size: 11px; font-family: monospace; background: var(--purple);
+  color: white; border-radius: 6px; padding: 2px 6px; display: inline-block; margin-left: 6px;
+}
+
+/* ═══ GAMES ═══ */
+.game-area {
+  background: var(--lav1); border-radius: 20px;
+  padding: 22px; border: 2.5px dashed var(--purple);
+  margin: 14px 0;
+}
+.game-area h3 { margin-top: 0; }
+
+/* Match game */
+.match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+.match-col { display: flex; flex-direction: column; gap: 8px; }
+.match-item {
+  background: white; border: 2.5px solid var(--lav3);
+  border-radius: 12px; padding: 10px 14px;
+  cursor: pointer; text-align: center;
+  font-weight: 700; font-size: 15px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+.match-item:hover { border-color: var(--purple); background: var(--lav1); }
+.match-item.selected { border-color: var(--purple); background: var(--lav2); color: var(--deep); }
+.match-item.matched   { border-color: #10b981; background: var(--mint2); color: #065f46; }
+.match-item.wrong     { border-color: #ef4444; background: #fee2e2; animation: shake 0.3s; }
+@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+
+/* Fill blank */
+.fillblank-list { display: flex; flex-direction: column; gap: 14px; margin-top: 14px; }
+.fillblank-q {
+  background: white; border: 2px solid var(--lav3);
+  border-radius: 14px; padding: 14px 18px;
+}
+.fillblank-q p { font-size: 16px; font-weight: 600; color: var(--textd); margin-bottom: 8px; }
+.fillblank-q input {
+  border: 2.5px solid var(--lav3); border-radius: 10px;
+  padding: 8px 14px; font-size: 15px; font-family: 'Nunito',sans-serif;
+  font-weight: 700; color: var(--deep); background: var(--lav1);
+  width: 100%; max-width: 320px;
+}
+.fillblank-q input:focus { outline: none; border-color: var(--purple); background: white; }
+.fillblank-q input.correct { border-color: #10b981; background: var(--mint2); }
+.fillblank-q input.wrong   { border-color: #ef4444; background: #fee2e2; }
+.fillblank-q .hint { font-size: 12px; color: var(--purple); margin-top: 4px; font-style: italic; }
+.fillblank-q .answer-reveal { font-size: 13px; font-weight: 800; color: #10b981; margin-top: 4px; display: none; }
+
+/* Word Scramble */
+.scramble-box {
+  background: white; border: 2.5px solid var(--lav3);
+  border-radius: 16px; padding: 20px; margin-top: 14px;
+}
+.scrambled-word {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin: 14px 0; justify-content: center;
+}
+.letter-tile {
+  background: linear-gradient(135deg, var(--purple), var(--deep));
+  color: white; border-radius: 10px; width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fredoka One', cursive; font-size: 22px;
+  box-shadow: 0 3px 10px rgba(109,40,217,0.3);
+  cursor: grab; user-select: none;
+}
+.scramble-answer {
+  font-family: 'Fredoka One', cursive; font-size: 20px;
+  color: var(--deep); background: var(--lav1);
+  border-radius: 10px; padding: 8px 16px;
+  display: inline-block; margin-top: 8px; display: none;
+}
+
+/* Memory game */
+.memory-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 10px; margin-top: 14px; max-width: 480px; margin-left: auto; margin-right: auto;
+}
+.mem-card {
+  aspect-ratio: 1; border-radius: 14px;
+  border: 2.5px solid var(--lav3);
+  background: linear-gradient(135deg, var(--deep), var(--purple));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px; cursor: pointer;
+  transition: transform 0.3s ease;
+  user-select: none; position: relative;
+  box-shadow: 0 3px 10px rgba(109,40,217,0.2);
+}
+.mem-card .back { font-size: 28px; position: absolute; opacity: 0; transition: opacity 0.3s; }
+.mem-card .front-icon { color: white; font-size: 28px; opacity: 1; transition: opacity 0.3s; }
+.mem-card.flipped { background: white; border-color: var(--purple); }
+.mem-card.flipped .back  { opacity: 1; }
+.mem-card.flipped .front-icon { opacity: 0; }
+.mem-card.matched { background: var(--mint2); border-color: #10b981; cursor: default; }
+
+/* Order builder */
+.order-builder {
+  background: white; border: 2.5px solid var(--lav3);
+  border-radius: 18px; padding: 20px; margin-top: 14px;
+}
+.word-chips {
+  display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0;
+  min-height: 48px; padding: 8px; border-radius: 12px;
+}
+.word-chip {
+  background: linear-gradient(135deg, var(--purple), var(--deep));
+  color: white; border-radius: 999px; padding: 7px 16px;
+  font-weight: 700; font-size: 14px; cursor: pointer;
+  transition: all 0.2s; user-select: none;
+  box-shadow: 0 2px 8px rgba(109,40,217,0.3);
+}
+.word-chip:hover { transform: scale(1.06); }
+.word-chip.placed { background: var(--mint); color: #065f46; }
+.word-chip.used { opacity: 0.35; cursor: default; pointer-events: none; }
+.answer-slot {
+  background: var(--lav1); border: 2px dashed var(--purple);
+  border-radius: 12px; padding: 10px 14px; min-height: 48px;
+  display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0;
+}
+.placed-chip {
+  background: var(--lav2); color: var(--deep);
+  border: 2px solid var(--purple); border-radius: 999px;
+  padding: 6px 14px; font-weight: 700; font-size: 14px;
+  cursor: pointer;
+}
+.placed-chip:hover { background: var(--coral); border-color: #ef4444; }
+
+/* Writing ═══ */
+.write-box {
+  background: white; border: 2.5px solid var(--lav3);
+  border-radius: 16px; padding: 20px; margin: 10px 0;
+}
+.write-box textarea {
+  width: 100%; min-height: 90px;
+  border: 2px solid var(--lav3); border-radius: 12px;
+  padding: 12px; font-family: 'Nunito', sans-serif;
+  font-size: 15px; resize: vertical; background: var(--lav1);
+  color: var(--textd); font-weight: 600;
+}
+.write-box textarea:focus { outline: none; border-color: var(--purple); background: white; }
+.write-box textarea::placeholder { color: #aaa; font-weight: 400; }
+.write-prompt {
+  font-size: 16px; font-weight: 700; color: var(--deep);
+  margin-bottom: 10px; line-height: 1.5;
+}
+.write-hint {
+  font-size: 13px; color: var(--purple); margin-top: 6px;
+  background: var(--lav1); border-radius: 8px; padding: 6px 10px;
+  border-left: 4px solid var(--purple);
+}
+
+/* Buttons ═══ */
+button { font-family: 'Nunito', sans-serif; cursor: pointer; border: none; }
+.btn {
+  display: inline-block; padding: 10px 22px; border-radius: 999px;
+  font-weight: 800; font-size: 14px; transition: all 0.2s ease;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.15); letter-spacing: 0.3px;
+}
+.btn:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 6px 18px rgba(0,0,0,0.2); }
+.btn-purple { background: linear-gradient(135deg, var(--deep), var(--purple)); color: white; }
+.btn-pink   { background: linear-gradient(135deg, #c026d3, var(--pink)); color: white; }
+.btn-mint   { background: linear-gradient(135deg, #059669, #34d399); color: white; }
+.btn-yellow { background: linear-gradient(135deg, #d97706, #fbbf24); color: white; }
+.btn-sm     { padding: 7px 16px; font-size: 13px; }
+
+/* Tags ═══ */
+.tag {
+  display: inline-block; padding: 3px 12px; border-radius: 999px;
+  font-size: 11px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase;
+}
+.tag-purple { background: var(--lav2); color: var(--deep); border: 2px solid var(--lav3); }
+.tag-pink   { background: #fdf4ff; color: #a21caf; border: 2px solid #e9d5ff; }
+.tag-mint   { background: var(--mint2); color: #065f46; border: 2px solid var(--mint); }
+.tag-yellow { background: var(--yellow2); color: #92400e; border: 2px solid var(--yellow); }
+
+/* Menu visual ═══ */
+.menu-board {
+  background: linear-gradient(160deg, var(--deeper), #581c87);
+  border-radius: 22px; padding: 24px; margin: 14px 0; color: white;
+  box-shadow: 0 8px 32px rgba(76,29,149,0.4);
+}
+.menu-board h3 {
+  font-family: 'Fredoka One', cursive; font-size: 24px;
+  color: var(--yellow); text-align: center; margin-bottom: 18px;
+}
+.menu-section { margin-bottom: 18px; }
+.menu-section h4 {
+  font-family: 'Fredoka One', cursive; font-size: 16px;
+  color: var(--pink2); margin-bottom: 8px;
+  border-bottom: 1px dashed rgba(255,255,255,0.2); padding-bottom: 4px;
+}
+.menu-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap: 8px; }
+.menu-item {
+  background: rgba(255,255,255,0.1); border-radius: 12px;
+  padding: 8px 12px; display: flex; justify-content: space-between;
+  align-items: center; font-size: 14px; font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.menu-item .mi-name { display: flex; align-items: center; gap: 6px; }
+.menu-item .price { color: var(--yellow); font-weight: 800; font-size: 13px; }
+
+/* Tip box ═══ */
+.tip-box {
+  background: var(--yellow2); border: 2px solid var(--yellow);
+  border-radius: 14px; padding: 14px 18px; margin: 12px 0;
+  font-size: 14px; color: #78350f;
+}
+.tip-box strong { color: #92400e; }
+
+/* Notification ═══ */
+.notif {
+  position: fixed; top: 18px; right: 18px;
+  background: linear-gradient(135deg, var(--deep), var(--purple));
+  color: white; padding: 14px 22px; border-radius: 16px;
+  font-weight: 800; font-size: 15px;
+  box-shadow: 0 6px 24px rgba(109,40,217,0.4);
+  z-index: 9999; transition: opacity 0.4s;
+  display: none; border: 2px solid var(--lav3);
+}
+
+/* Stars / XP reward ═══ */
+.reward-pop {
+  position: fixed; top: 50%; left: 50%;
+  transform: translate(-50%,-50%) scale(0);
+  background: white; border: 4px solid var(--purple);
+  border-radius: 28px; padding: 28px 36px; text-align: center;
+  z-index: 10000; box-shadow: 0 16px 60px rgba(109,40,217,0.4);
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  max-width: 320px;
+}
+.reward-pop.show { transform: translate(-50%,-50%) scale(1); }
+.reward-pop .stars-big { font-size: 36px; }
+.reward-pop h3 { font-family: 'Fredoka One', cursive; font-size: 26px; color: var(--deep); margin: 8px 0 4px; }
+.reward-pop p  { font-size: 15px; color: #666; margin-bottom: 16px; }
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 9999; display: none; }
+
+/* Timer ═══ */
+.timer-display {
+  font-family: 'Fredoka One', cursive;
+  font-size: 52px; color: var(--deep); text-align: center;
+  letter-spacing: 2px; margin: 8px 0;
+}
+.timer-display.warn { color: #dc2626; animation: pulse 0.7s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+/* Roleplay scenario ═══ */
+.scenario-box {
+  background: linear-gradient(135deg, var(--lav1), var(--pink3));
+  border: 2.5px solid var(--pink);
+  border-radius: 18px; padding: 20px; margin: 14px 0;
+}
+.scenario-scene {
+  font-weight: 800; color: var(--deep); font-size: 15px;
+  background: white; border-radius: 10px; padding: 8px 14px;
+  border-left: 4px solid var(--purple); margin-bottom: 14px;
+}
+
+/* Responsive ═══ */
+@media (max-width: 680px) {
+  .vocab-grid { grid-template-columns: repeat(3,1fr); }
+  .match-grid { grid-template-columns: 1fr; }
+  .memory-grid { grid-template-columns: repeat(3,1fr); }
+  .phrase-row { grid-template-columns: 1fr; }
+  .header h1 { font-size: 34px; }
+  .pron-grid { grid-template-columns: 1fr; }
+}
+
+/* Confetti bits ═══ */
+.confetti-container {
+  position: fixed; inset: 0; pointer-events: none; z-index: 8000;
+}
+.confetti-piece {
+  position: absolute; width: 10px; height: 10px; border-radius: 2px;
+  animation: confettiFall 2.5s ease-in forwards;
+}
+@keyframes confettiFall {
+  0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="notif" id="notif"></div>
+  <div class="overlay" id="overlay" onclick="closeReward()"></div>
+  <div class="reward-pop" id="reward-pop">
+    <div class="stars-big" id="reward-stars">⭐⭐⭐</div>
+    <h3 id="reward-title">Amazing!</h3>
+    <p id="reward-msg">You're doing great!</p>
+    <button class="btn btn-purple" onclick="closeReward()">Yay! Continue 🎉</button>
+  </div>
+  <div class="confetti-container" id="confetti"></div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <h1>☕ Duda's <span>Café</span> English!</h1>
+    <div class="header-sub">🌍 Learn English at the Coffee Shop · Beginner Level A1</div>
+    <div class="header-badges">
+      <span class="badge">👩‍🎓 Duda — 12 anos</span>
+      <span class="badge">🎯 A1 Beginner</span>
+      <span class="badge">☕ Café Theme</span>
+      <span class="badge">🎮 6 Activities</span>
+    </div>
+  </header>
+
+  <!-- XP PROGRESS -->
+  <div class="progress-wrap">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+      <span class="xp-counter">⭐ XP: <span id="xp-val">0</span> / 200</span>
+      <span style="font-size:13px; color:var(--purple); font-weight:700;" id="level-label">🔰 Beginner Barista</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="xp-bar" style="width:0%"></div></div>
+    <div style="font-size:12px; color:#aaa; margin-top:4px;" id="xp-hint">Complete activities to earn XP! 🚀</div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('vocab',this)">📚 Vocabulary</button>
+    <button class="tab-btn" onclick="switchTab('pronunciation',this)">🗣️ Pronunciation</button>
+    <button class="tab-btn" onclick="switchTab('phrases',this)">💬 Phrases</button>
+    <button class="tab-btn" onclick="switchTab('games',this)">🎮 Games</button>
+    <button class="tab-btn" onclick="switchTab('writing',this)">✏️ Writing</button>
+    <button class="tab-btn" onclick="switchTab('roleplay',this)">🎭 Role Play</button>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       TAB 1 · VOCABULARY
+  ══════════════════════════════════════════ -->
+  <div class="tab-content active" id="tab-vocab">
+
+    <div class="card card-purple">
+      <h2>📚 Vocabulary — At the Café <span class="tag tag-purple">30 words</span></h2>
+      <p style="color:#666; font-size:14px;">Click any card to mark it as learned! 👇 Try to say the word out loud before clicking!</p>
+    </div>
+
+    <!-- DRINKS -->
+    <div class="card">
+      <div class="section-label">☕ Drinks — Bebidas</div>
+      <div class="vocab-grid" id="grid-drinks"></div>
+    </div>
+
+    <!-- FOOD -->
+    <div class="card">
+      <div class="section-label">🍰 Food — Comida</div>
+      <div class="vocab-grid" id="grid-food"></div>
+    </div>
+
+    <!-- CAFÉ ITEMS -->
+    <div class="card">
+      <div class="section-label">🏪 Café Items — Itens da Cafeteria</div>
+      <div class="vocab-grid" id="grid-items"></div>
+    </div>
+
+    <!-- MENU BOARD VISUAL -->
+    <div class="card card-purple">
+      <h2>🟣 The Café Menu Board</h2>
+      <div class="menu-board">
+        <h3>✨ PURPLE BEAN CAFÉ ✨</h3>
+        <div class="menu-section">
+          <h4>☕ HOT DRINKS</h4>
+          <div class="menu-items">
+            <div class="menu-item"><span class="mi-name">☕ Coffee</span><span class="price">$3.00</span></div>
+            <div class="menu-item"><span class="mi-name">🍵 Tea</span><span class="price">$2.50</span></div>
+            <div class="menu-item"><span class="mi-name">🥛 Hot Chocolate</span><span class="price">$3.50</span></div>
+            <div class="menu-item"><span class="mi-name">🥛 Warm Milk</span><span class="price">$2.00</span></div>
+          </div>
+        </div>
+        <div class="menu-section">
+          <h4>🧊 COLD DRINKS</h4>
+          <div class="menu-items">
+            <div class="menu-item"><span class="mi-name">🧃 Orange Juice</span><span class="price">$3.50</span></div>
+            <div class="menu-item"><span class="mi-name">🧃 Apple Juice</span><span class="price">$3.00</span></div>
+            <div class="menu-item"><span class="mi-name">🥤 Milkshake</span><span class="price">$5.00</span></div>
+            <div class="menu-item"><span class="mi-name">💧 Water</span><span class="price">$1.00</span></div>
+            <div class="menu-item"><span class="mi-name">🥤 Lemonade</span><span class="price">$3.50</span></div>
+          </div>
+        </div>
+        <div class="menu-section">
+          <h4>🍰 FOOD</h4>
+          <div class="menu-items">
+            <div class="menu-item"><span class="mi-name">🧁 Muffin</span><span class="price">$3.00</span></div>
+            <div class="menu-item"><span class="mi-name">🍰 Cake</span><span class="price">$4.00</span></div>
+            <div class="menu-item"><span class="mi-name">🥐 Croissant</span><span class="price">$3.50</span></div>
+            <div class="menu-item"><span class="mi-name">🍪 Cookie</span><span class="price">$2.00</span></div>
+            <div class="menu-item"><span class="mi-name">🥪 Sandwich</span><span class="price">$6.00</span></div>
+            <div class="menu-item"><span class="mi-name">🍦 Ice Cream</span><span class="price">$4.50</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:8px;">
+      <button class="btn btn-purple" onclick="checkVocabDone()">✅ I learned all words! +30 XP</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       TAB 2 · PRONUNCIATION
+  ══════════════════════════════════════════ -->
+  <div class="tab-content" id="tab-pronunciation">
+
+    <div class="card card-pink">
+      <h2>🗣️ Pronunciation Guide <span class="tag tag-pink">Say it right!</span></h2>
+      <p style="color:#666; font-size:14px;">Click "🔊 Hear it" to listen to the word in English! Then repeat out loud 3 times! 🎤</p>
+    </div>
+
+    <div class="card">
+      <div class="section-label">🔊 Words with Pronunciation</div>
+      <div class="pron-grid" id="pron-grid"></div>
+    </div>
+
+    <!-- PHONICS FOCUS -->
+    <div class="card card-yellow">
+      <h2>💡 Tricky Sounds — Sounds Difíceis!</h2>
+      <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap:12px; margin-top:12px;">
+        <div style="background:white; border-radius:14px; padding:14px; border:2px solid var(--yellow);">
+          <div style="font-size:22px; margin-bottom:6px;">🔤 TH sound</div>
+          <div style="font-weight:800; color:var(--deep); font-size:15px;">"Thank you"</div>
+          <div style="font-family:monospace; background:var(--lav1); border-radius:6px; padding:3px 8px; font-size:13px; color:var(--purple); display:inline-block; margin:4px 0;">/θæŋk juː/</div>
+          <div style="font-size:13px; color:#666;">Put your tongue between your teeth! Not /f/ !</div>
+        </div>
+        <div style="background:white; border-radius:14px; padding:14px; border:2px solid var(--yellow);">
+          <div style="font-size:22px; margin-bottom:6px;">🔤 W sound</div>
+          <div style="font-weight:800; color:var(--deep); font-size:15px;">"Water" / "Would"</div>
+          <div style="font-family:monospace; background:var(--lav1); border-radius:6px; padding:3px 8px; font-size:13px; color:var(--purple); display:inline-block; margin:4px 0;">/ˈwɔː.tər/ /wʊd/</div>
+          <div style="font-size:13px; color:#666;">Round lips like a kiss, then open! Not /v/ !</div>
+        </div>
+        <div style="background:white; border-radius:14px; padding:14px; border:2px solid var(--yellow);">
+          <div style="font-size:22px; margin-bottom:6px;">🔤 H sound</div>
+          <div style="font-weight:800; color:var(--deep); font-size:15px;">"Hot chocolate"</div>
+          <div style="font-family:monospace; background:var(--lav1); border-radius:6px; padding:3px 8px; font-size:13px; color:var(--purple); display:inline-block; margin:4px 0;">/hɒt ˈtʃɒk.lət/</div>
+          <div style="font-size:13px; color:#666;">A soft breath of air — like fogging a mirror!</div>
+        </div>
+        <div style="background:white; border-radius:14px; padding:14px; border:2px solid var(--yellow);">
+          <div style="font-size:22px; margin-bottom:6px;">🔤 CH sound</div>
+          <div style="font-weight:800; color:var(--deep); font-size:15px;">"Chocolate" / "Change"</div>
+          <div style="font-family:monospace; background:var(--lav1); border-radius:6px; padding:3px 8px; font-size:13px; color:var(--purple); display:inline-block; margin:4px 0;">/tʃ/</div>
+          <div style="font-size:13px; color:#666;">Like a little sneeze — "tch"!</div>
+        </div>
+        <div style="background:white; border-radius:14px; padding:14px; border:2px solid var(--yellow);">
+          <div style="font-size:22px; margin-bottom:6px;">🔤 Croissant</div>
+          <div style="font-weight:800; color:var(--deep); font-size:15px;">"Croissant"</div>
+          <div style="font-family:monospace; background:var(--lav1); border-radius:6px; padding:3px 8px; font-size:13px; color:var(--purple); display:inline-block; margin:4px 0;">/krwɑːˈsɒ̃/</div>
+          <div style="font-size:13px; color:#666;">From French! Say: "kwuh-SAWN" — silent T!</div>
+        </div>
+        <div style="background:white; border-radius:14px; padding:14px; border:2px solid var(--yellow);">
+          <div style="font-size:22px; margin-bottom:6px;">🔤 Would like</div>
+          <div style="font-weight:800; color:var(--deep); font-size:15px;">"I would like"</div>
+          <div style="font-family:monospace; background:var(--lav1); border-radius:6px; padding:3px 8px; font-size:13px; color:var(--purple); display:inline-block; margin:4px 0;">/aɪ wʊd laɪk/</div>
+          <div style="font-size:13px; color:#666;">In conversation it's often: "I'd like" /aɪd laɪk/</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STRESS PATTERNS -->
+    <div class="card card-mint">
+      <h2>🎵 Stress & Rhythm</h2>
+      <p style="color:#666; font-size:14px; margin-bottom:14px;">The BIG (stressed) syllable is in <span style="background:var(--lav2); color:var(--deep); font-weight:800; padding:2px 6px; border-radius:4px;">CAPS</span>. Clap the beat! 👏</p>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <div style="background:white; border-radius:12px; padding:12px 16px; border:2px solid var(--mint);">
+          <span style="font-size:18px;">☕ </span> <span style="font-weight:800; font-size:16px; color:var(--deep);">COF · fee</span> <span style="font-size:13px; color:#888; margin-left:8px;">[STRESS on first syllable]</span>
+        </div>
+        <div style="background:white; border-radius:12px; padding:12px 16px; border:2px solid var(--mint);">
+          <span style="font-size:18px;">🥛 </span> <span style="font-weight:800; font-size:16px; color:var(--deep);">hot cho · CO · late</span> <span style="font-size:13px; color:#888; margin-left:8px;">[STRESS on 3rd syllable]</span>
+        </div>
+        <div style="background:white; border-radius:12px; padding:12px 16px; border:2px solid var(--mint);">
+          <span style="font-size:18px;">🍊 </span> <span style="font-weight:800; font-size:16px; color:var(--deep);">OR · ange JUICE</span> <span style="font-size:13px; color:#888; margin-left:8px;">[Two stressed words]</span>
+        </div>
+        <div style="background:white; border-radius:12px; padding:12px 16px; border:2px solid var(--mint);">
+          <span style="font-size:18px;">🤝 </span> <span style="font-weight:800; font-size:16px; color:var(--deep);">I would LIKE a CUP of TEA</span> <span style="font-size:13px; color:#888; margin-left:8px;">[Natural sentence stress]</span>
+        </div>
+        <div style="background:white; border-radius:12px; padding:12px 16px; border:2px solid var(--mint);">
+          <span style="font-size:18px;">😊 </span> <span style="font-weight:800; font-size:16px; color:var(--deep);">THANK you VE · ry MUCH</span> <span style="font-size:13px; color:#888; margin-left:8px;">[Polite expression]</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <button class="btn btn-pink" onclick="addXP(25,'pronunciation')">🗣️ I practiced all sounds! +25 XP</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       TAB 3 · PHRASES
+  ══════════════════════════════════════════ -->
+  <div class="tab-content" id="tab-phrases">
+
+    <div class="card card-purple">
+      <h2>💬 Useful Phrases <span class="tag tag-purple">Frases Essenciais</span></h2>
+      <p style="color:#666; font-size:14px;">Learn these phrases and you can order anything in any café! 🌍</p>
+    </div>
+
+    <!-- ORDERING -->
+    <div class="card">
+      <h3>🛒 Ordering — Pedindo</h3>
+      <div class="phrase-list" id="phrases-ordering"></div>
+    </div>
+
+    <!-- STAFF PHRASES -->
+    <div class="card card-mint">
+      <h3>👨‍💼 What the Staff Says — O que o staff fala</h3>
+      <div class="phrase-list" id="phrases-staff"></div>
+    </div>
+
+    <!-- POLITE EXTRAS -->
+    <div class="card card-yellow">
+      <h3>😊 Being Polite — Sendo Educado/a</h3>
+      <div class="phrase-list" id="phrases-polite"></div>
+    </div>
+
+    <!-- DIALOGUE REFERENCE -->
+    <div class="card card-pink">
+      <h2>📖 Read the Full Dialogue</h2>
+      <p style="font-size:13px; color:#888; margin-bottom:14px;">Read and follow along! 👇 The barista (👩🏻) and Duda (🌟) at the café.</p>
+      <div class="dialogue-box">
+        <div class="dialogue-line">
+          <div class="dialogue-avatar av-staff">👩🏻</div>
+          <div>
+            <div class="dialogue-label">Barista</div>
+            <div class="dialogue-bubble bubble-staff">Hello! Welcome to Purple Bean Café! <br>What can I get you?
+              <span class="bubble-pt">Olá! Bem-vinda à Purple Bean Café! O que posso trazer para você?</span>
+            </div>
+          </div>
+        </div>
+        <div class="dialogue-line">
+          <div class="dialogue-avatar av-duda">🌟</div>
+          <div>
+            <div class="dialogue-label">Duda</div>
+            <div class="dialogue-bubble bubble-duda">Hi! Can I have a hot chocolate, please?
+              <span class="bubble-pt">Oi! Posso pedir um chocolate quente, por favor?</span>
+            </div>
+          </div>
+        </div>
+        <div class="dialogue-line">
+          <div class="dialogue-avatar av-staff">👩🏻</div>
+          <div>
+            <div class="dialogue-label">Barista</div>
+            <div class="dialogue-bubble bubble-staff">Of course! Small, medium or large?
+              <span class="bubble-pt">Claro! Pequeno, médio ou grande?</span>
+            </div>
+          </div>
+        </div>
+        <div class="dialogue-line">
+          <div class="dialogue-avatar av-duda">🌟</div>
+          <div>
+            <div class="dialogue-label">Duda</div>
+            <div class="dialogue-bubble bubble-duda">Medium, please. And a muffin, too!
+              <span class="bubble-pt">Médio, por favor. E um muffin também!</span>
+            </div>
+          </div>
+        </div>
+        <div class="dialogue-line">
+          <div class="dialogue-avatar av-staff">👩🏻</div>
+          <div>
+            <div class="dialogue-label">Barista</div>
+            <div class="dialogue-bubble bubble-staff">Is that everything?
+              <span class="bubble-pt">É só isso?</span>
+            </div>
+          </div>
+        </div>
+        <div class="dialogue-line">
+          <div class="dialogue-avatar av-duda">🌟</div>
+          <div>
+            <div class="dialogue-label">Duda</div>
+            <div class="dialogue-bubble bubble-duda">Yes, that's all. How much is it?
+              <span class="bubble-pt">Sim, é só isso. Quanto custa?</span>
+            </div>
+          </div>
+        </div>
+        <div class="dialogue-line">
+          <div class="dialogue-avatar av-staff">👩🏻</div>
+          <div>
+            <div class="dialogue-label">Barista</div>
+            <div class="dialogue-bubble bubble-staff">That's $6.50, please. 🧾
+              <span class="bubble-pt">São $6,50, por favor.</span>
+            </div>
+          </div>
+        </div>
+        <div class="dialogue-line">
+          <div class="dialogue-avatar av-duda">🌟</div>
+          <div>
+            <div class="dialogue-label">Duda</div>
+            <div class="dialogue-bubble bubble-duda">Here you go! Thank you so much! 😊
+              <span class="bubble-pt">Aqui está! Muito obrigada!</span>
+            </div>
+          </div>
+        </div>
+        <div class="dialogue-line">
+          <div class="dialogue-avatar av-staff">👩🏻</div>
+          <div>
+            <div class="dialogue-label">Barista</div>
+            <div class="dialogue-bubble bubble-staff">You're welcome! Enjoy! ☕
+              <span class="bubble-pt">De nada! Aproveite!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-pink" onclick="addXP(20,'phrases')" style="margin-top:12px;">📖 I read the dialogue! +20 XP</button>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       TAB 4 · GAMES
+  ══════════════════════════════════════════ -->
+  <div class="tab-content" id="tab-games">
+
+    <div class="card card-purple">
+      <h2>🎮 Fun Games! <span class="tag tag-purple">Play & Learn!</span></h2>
+      <p style="color:#666; font-size:14px;">Play all games to earn XP and level up! 🚀</p>
+    </div>
+
+    <!-- GAME 1: MEMORY -->
+    <div class="card card-yellow">
+      <h2>🃏 Game 1 — Memory Match <span class="tag tag-yellow">+20 XP</span></h2>
+      <p style="color:#666; font-size:14px; margin-bottom:6px;">Find the matching pairs — word + emoji! Click two cards to flip them.</p>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:8px;">
+        <span style="font-weight:800; color:var(--deep);" id="mem-status">Pairs found: <span id="mem-pairs">0</span> / 6</span>
+        <button class="btn btn-yellow btn-sm" onclick="initMemory()">↺ New Game</button>
+      </div>
+      <div class="memory-grid" id="memory-grid"></div>
+    </div>
+
+    <!-- GAME 2: MATCH MEANING -->
+    <div class="card card-mint">
+      <h2>🔗 Game 2 — Match the Meaning <span class="tag tag-mint">+20 XP</span></h2>
+      <p style="color:#666; font-size:14px; margin-bottom:10px;">Click a word on the left, then its translation on the right!</p>
+      <div class="match-grid">
+        <div class="match-col" id="match-left"></div>
+        <div class="match-col" id="match-right"></div>
+      </div>
+      <div style="margin-top:12px; display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+        <button class="btn btn-mint btn-sm" onclick="initMatch()">↺ Reset</button>
+        <span style="font-weight:800; color:#065f46;" id="match-score">Score: 0 / 8</span>
+      </div>
+    </div>
+
+    <!-- GAME 3: WORD SCRAMBLE -->
+    <div class="card card-pink">
+      <h2>🔀 Game 3 — Word Scramble <span class="tag tag-pink">+15 XP</span></h2>
+      <p style="color:#666; font-size:14px; margin-bottom:10px;">Can you unscramble the café word? 🤔</p>
+      <div class="scramble-box" id="scramble-box">
+        <div style="font-size:13px; font-weight:700; color:var(--purple); margin-bottom:6px;">Hint: <span id="scramble-hint"></span></div>
+        <div id="scrambled-word" class="scrambled-word"></div>
+        <input type="text" id="scramble-input" placeholder="Type your answer here..." style="border:2.5px solid var(--lav3); border-radius:12px; padding:10px 16px; font-size:16px; font-family:'Nunito',sans-serif; font-weight:700; color:var(--deep); width:100%; max-width:300px; background:var(--lav1);">
+        <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn btn-pink btn-sm" onclick="checkScramble()">✅ Check!</button>
+          <button class="btn btn-purple btn-sm" onclick="nextScramble()">Next Word →</button>
+          <button class="btn btn-yellow btn-sm" onclick="revealScramble()">💡 Show Answer</button>
+        </div>
+        <div class="scramble-answer" id="scramble-answer"></div>
+      </div>
+    </div>
+
+    <!-- GAME 4: SENTENCE ORDER -->
+    <div class="card card-purple">
+      <h2>📝 Game 4 — Build the Sentence <span class="tag tag-purple">+20 XP</span></h2>
+      <p style="color:#666; font-size:14px; margin-bottom:10px;">Click the words in the right order to build a sentence! Click a placed word to remove it.</p>
+      <div id="sentence-game-area"></div>
+      <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+        <button class="btn btn-purple btn-sm" onclick="checkSentence()">✅ Check!</button>
+        <button class="btn btn-pink btn-sm" onclick="nextSentence()">Next Sentence →</button>
+        <button class="btn btn-yellow btn-sm" onclick="resetSentence()">↺ Reset</button>
+      </div>
+      <div id="sentence-feedback" style="margin-top:10px; font-weight:800; font-size:15px;"></div>
+    </div>
+
+    <!-- GAME 5: MULTIPLE CHOICE QUIZ -->
+    <div class="card card-mint">
+      <h2>🧠 Game 5 — Quick Quiz! <span class="tag tag-mint">+25 XP</span></h2>
+      <p style="color:#666; font-size:14px; margin-bottom:12px;">Choose the correct answer! 🎯</p>
+      <div id="quiz-area"></div>
+      <div style="margin-top:12px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+        <button class="btn btn-mint btn-sm" onclick="nextQuiz()">Next Question →</button>
+        <span style="font-weight:800; color:#065f46;" id="quiz-score">Score: 0 / 0</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       TAB 5 · WRITING
+  ══════════════════════════════════════════ -->
+  <div class="tab-content" id="tab-writing">
+
+    <div class="card card-purple">
+      <h2>✏️ Writing Activities <span class="tag tag-purple">5 exercises</span></h2>
+      <p style="color:#666; font-size:14px;">Practice writing in English! Take your time and use the hints! 😊</p>
+    </div>
+
+    <!-- FILL IN THE BLANKS -->
+    <div class="card card-pink">
+      <h2>1️⃣ Fill in the Blanks</h2>
+      <p style="color:#666; font-size:14px; margin-bottom:12px;">Complete the sentences with the correct word! Use the word bank below. 👇</p>
+      <div class="tip-box">
+        <strong>📦 Word Bank:</strong> &nbsp; please &nbsp;·&nbsp; have &nbsp;·&nbsp; much &nbsp;·&nbsp; like &nbsp;·&nbsp; order &nbsp;·&nbsp; here &nbsp;·&nbsp; take &nbsp;·&nbsp; that
+      </div>
+      <div class="fillblank-list" id="fillblank-list"></div>
+      <div style="margin-top:14px; display:flex; gap:8px; flex-wrap:wrap;">
+        <button class="btn btn-pink" onclick="checkFillBlanks()">✅ Check Answers</button>
+        <button class="btn btn-purple btn-sm" onclick="resetFillBlanks()">↺ Reset</button>
+      </div>
+      <div id="fillblank-result" style="margin-top:10px; font-weight:800; font-size:15px;"></div>
+    </div>
+
+    <!-- WRITE A DIALOGUE -->
+    <div class="card card-mint">
+      <h2>2️⃣ Write a Mini Dialogue</h2>
+      <div class="write-box">
+        <div class="write-prompt">You are at a café. The barista says: <strong>"Hello! What can I get you today?"</strong><br>Write 3–4 lines of dialogue — what do YOU say? What does the barista say next?</div>
+        <textarea id="dialogue-write" placeholder="Duda: Hi! Can I have...&#10;Barista: Sure! Would you like...&#10;Duda: Yes, please. And...&#10;Barista: That's ... please!"></textarea>
+        <div class="write-hint">💡 Tip: Use phrases like "Can I have...", "I'd like...", "How much is...?", "Thank you!"</div>
+      </div>
+      <button class="btn btn-mint" onclick="saveWrite('dialogue-write','dialogue-saved')" style="margin-top:10px;">💾 Save my dialogue!</button>
+      <div id="dialogue-saved" style="display:none; color:#059669; font-weight:800; margin-top:6px; font-size:14px;">✅ Saved! Great work! 🌟</div>
+    </div>
+
+    <!-- TRANSLATE SENTENCES -->
+    <div class="card card-yellow">
+      <h2>3️⃣ Translate to English! 🇺🇸</h2>
+      <p style="color:#666; font-size:14px; margin-bottom:12px;">Translate these phrases from Portuguese to English! Write your answers below.</p>
+      <div id="translate-list"></div>
+      <button class="btn btn-yellow" onclick="checkTranslations()" style="margin-top:12px;">✅ Check!</button>
+    </div>
+
+    <!-- CREATE YOUR ORDER -->
+    <div class="card card-purple">
+      <h2>4️⃣ Write Your Order! ☕</h2>
+      <div class="write-box">
+        <div class="write-prompt">Look at the menu above and write YOUR perfect café order! Use this structure:<br><br>
+          <strong>"I would like [drink] and [food], please."</strong><br>
+          <strong>"How much is it?"</strong>
+        </div>
+        <textarea id="order-write" placeholder="I would like a hot chocolate and a muffin, please..."></textarea>
+        <div class="write-hint">💡 Tip: You can order 2 things! Use "and" to connect them. Add "please" at the end — it's polite! 😊</div>
+      </div>
+      <button class="btn btn-purple" onclick="saveWrite('order-write','order-saved')" style="margin-top:10px;">💾 Save my order!</button>
+      <div id="order-saved" style="display:none; color:var(--purple); font-weight:800; margin-top:6px; font-size:14px;">✅ Delicious order! +15 XP 🌟</div>
+    </div>
+
+    <!-- WRITE ABOUT YOUR FAVOURITE CAFÉ -->
+    <div class="card card-pink">
+      <h2>5️⃣ My Favourite Café 💜</h2>
+      <div class="write-box">
+        <div class="write-prompt">Write 3–5 sentences about your ideal café! 🌸<br>
+          What is its name? What do you order? What does it look like?</div>
+        <textarea id="essay-write" style="min-height:120px;" placeholder="My favourite café is called... It has... I always order... The place is..."></textarea>
+        <div class="write-hint">💡 Tip: Use adjectives like: cozy, beautiful, delicious, warm, purple, amazing! Try to use at least 3! ✨</div>
+      </div>
+      <button class="btn btn-pink" onclick="saveWrite('essay-write','essay-saved')" style="margin-top:10px;">💾 Save my story!</button>
+      <div id="essay-saved" style="display:none; color:#a21caf; font-weight:800; margin-top:6px; font-size:14px;">✅ Amazing writing! +20 XP 🎉</div>
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       TAB 6 · ROLE PLAY
+  ══════════════════════════════════════════ -->
+  <div class="tab-content" id="tab-roleplay">
+
+    <div class="card card-purple">
+      <h2>🎭 Role Play — Let's Practice! <span class="tag tag-purple">Speaking Time!</span></h2>
+      <p style="color:#666; font-size:14px;">Now it's time to SPEAK! Your teacher will be the barista. You are the customer! 🌟</p>
+    </div>
+
+    <!-- SCENARIO CARDS -->
+    <div class="card">
+      <h2>🎬 Choose Your Scenario!</h2>
+      <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap:14px; margin-top:12px;">
+
+        <div class="scenario-box">
+          <div class="scenario-scene">📍 Scenario 1 — Easy 🟢</div>
+          <p style="font-size:14px; font-weight:600; margin-bottom:12px; color:var(--textd);">You walk into a café. Order a hot chocolate and a cookie. Ask the price. Say thank you!</p>
+          <div style="font-size:13px; color:var(--purple); font-weight:700; margin-bottom:6px;">🎯 Goal phrases:</div>
+          <ul style="font-size:13px; padding-left:16px; color:#555; line-height:2;">
+            <li>"Can I have a hot chocolate, please?"</li>
+            <li>"And a cookie, too!"</li>
+            <li>"How much is it?"</li>
+            <li>"Thank you!"</li>
+          </ul>
+        </div>
+
+        <div class="scenario-box">
+          <div class="scenario-scene">📍 Scenario 2 — Medium 🟡</div>
+          <p style="font-size:14px; font-weight:600; margin-bottom:12px; color:var(--textd);">Ask for a table for two. Order drinks for you and a friend. One drink is wrong — send it back politely!</p>
+          <div style="font-size:13px; color:var(--purple); font-weight:700; margin-bottom:6px;">🎯 Goal phrases:</div>
+          <ul style="font-size:13px; padding-left:16px; color:#555; line-height:2;">
+            <li>"A table for two, please."</li>
+            <li>"I'd like... and my friend would like..."</li>
+            <li>"Excuse me, I ordered..., not..."</li>
+            <li>"Sorry about that!" / "No problem!"</li>
+          </ul>
+        </div>
+
+        <div class="scenario-box">
+          <div class="scenario-scene">📍 Scenario 3 — Challenge 🔴</div>
+          <p style="font-size:14px; font-weight:600; margin-bottom:12px; color:var(--textd);">Order a full meal: drink, snack, dessert. Ask for the Wi-Fi password. Pay and ask for the receipt!</p>
+          <div style="font-size:13px; color:var(--purple); font-weight:700; margin-bottom:6px;">🎯 Goal phrases:</div>
+          <ul style="font-size:13px; padding-left:16px; color:#555; line-height:2;">
+            <li>"I'd like to order..."</li>
+            <li>"Could I have the Wi-Fi password?"</li>
+            <li>"Can I pay by card?"</li>
+            <li>"Could I have the receipt?"</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RANDOM BARISTA PROMPT -->
+    <div class="card card-mint">
+      <h2>🎲 Random Barista Question!</h2>
+      <p style="color:#666; font-size:14px; margin-bottom:12px;">The teacher (barista) asks — Duda answers! Click to get a new question!</p>
+      <div class="game-area" id="barista-prompt-box">
+        <div class="dialogue-avatar av-staff" style="width:48px; height:48px; margin-bottom:10px; font-size:26px;">👩🏻</div>
+        <div style="font-family:'Fredoka One',cursive; font-size:22px; color:var(--deep); margin-bottom:10px;" id="barista-q-text">Click the button to get a question! 🎯</div>
+        <div style="font-size:13px; color:#888; font-style:italic;" id="barista-q-pt"></div>
+      </div>
+      <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;">
+        <button class="btn btn-mint" onclick="randomBarista()">🎲 New Question!</button>
+        <button class="btn btn-purple btn-sm" onclick="showBaristaHint()">💡 Show Hint</button>
+      </div>
+      <div id="barista-hint" style="display:none; margin-top:10px;" class="tip-box"></div>
+    </div>
+
+    <!-- TIMER -->
+    <div class="card" style="text-align:center;">
+      <h3>⏱️ Speaking Timer</h3>
+      <div class="timer-display" id="timer-display">01:00</div>
+      <div style="display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:10px;">
+        <button class="btn btn-purple btn-sm" onclick="setTimer(30)">30s</button>
+        <button class="btn btn-purple btn-sm" onclick="setTimer(60)">1 min</button>
+        <button class="btn btn-purple btn-sm" onclick="setTimer(120)">2 min</button>
+        <button class="btn btn-mint btn-sm" onclick="startTimer()">▶ Start</button>
+        <button class="btn btn-yellow btn-sm" onclick="pauseTimer()">⏸ Pause</button>
+        <button class="btn btn-pink btn-sm" onclick="resetTimer()">↺ Reset</button>
+      </div>
+    </div>
+
+    <!-- SELF CHECK -->
+    <div class="card card-purple">
+      <h2>⭐ How did I do? Self Check!</h2>
+      <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap:10px; margin-top:12px;">
+        <div style="background:white; border:2px solid var(--lav3); border-radius:14px; padding:14px; display:flex; gap:10px; align-items:flex-start;">
+          <input type="checkbox" id="sc1" style="transform:scale(1.3); accent-color:var(--purple); margin-top:2px; flex-shrink:0;">
+          <label for="sc1" style="font-size:13px; font-weight:600; color:var(--textd);">I said my order in English without looking at notes.</label>
+        </div>
+        <div style="background:white; border:2px solid var(--lav3); border-radius:14px; padding:14px; display:flex; gap:10px; align-items:flex-start;">
+          <input type="checkbox" id="sc2" style="transform:scale(1.3); accent-color:var(--purple); margin-top:2px; flex-shrink:0;">
+          <label for="sc2" style="font-size:13px; font-weight:600; color:var(--textd);">I used "please" and "thank you".</label>
+        </div>
+        <div style="background:white; border:2px solid var(--lav3); border-radius:14px; padding:14px; display:flex; gap:10px; align-items:flex-start;">
+          <input type="checkbox" id="sc3" style="transform:scale(1.3); accent-color:var(--purple); margin-top:2px; flex-shrink:0;">
+          <label for="sc3" style="font-size:13px; font-weight:600; color:var(--textd);">I understood what the barista said.</label>
+        </div>
+        <div style="background:white; border:2px solid var(--lav3); border-radius:14px; padding:14px; display:flex; gap:10px; align-items:flex-start;">
+          <input type="checkbox" id="sc4" style="transform:scale(1.3); accent-color:var(--purple); margin-top:2px; flex-shrink:0;">
+          <label for="sc4" style="font-size:13px; font-weight:600; color:var(--textd);">I asked "How much is it?" correctly.</label>
+        </div>
+        <div style="background:white; border:2px solid var(--lav3); border-radius:14px; padding:14px; display:flex; gap:10px; align-items:flex-start;">
+          <input type="checkbox" id="sc5" style="transform:scale(1.3); accent-color:var(--purple); margin-top:2px; flex-shrink:0;">
+          <label for="sc5" style="font-size:13px; font-weight:600; color:var(--textd);">I felt confident speaking English today! 💜</label>
+        </div>
+        <div style="background:white; border:2px solid var(--lav3); border-radius:14px; padding:14px; display:flex; gap:10px; align-items:flex-start;">
+          <input type="checkbox" id="sc6" style="transform:scale(1.3); accent-color:var(--purple); margin-top:2px; flex-shrink:0;">
+          <label for="sc6" style="font-size:13px; font-weight:600; color:var(--textd);">I completed at least one role play scenario.</label>
+        </div>
+      </div>
+      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+        <button class="btn btn-purple" onclick="checkSelf()">📊 See my result!</button>
+        <div id="self-result" style="display:none; font-family:'Fredoka One',cursive; font-size:22px; color:var(--deep);"></div>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- /.app -->
+
+<script>
+// ════════════════════════════════════════
+// DATA
+// ════════════════════════════════════════
+const vocabDrinks = [
+  {e:'Coffee',   em:'☕', pron:'/ˈkɒf.i/',       pt:'Café'},
+  {e:'Tea',      em:'🍵', pron:'/tiː/',           pt:'Chá'},
+  {e:'Hot Chocolate', em:'🥛', pron:'/hɒt ˈtʃɒk.lət/', pt:'Chocolate Quente'},
+  {e:'Orange Juice',  em:'🧃', pron:'/ˈɒr.ɪndʒ dʒuːs/', pt:'Suco de Laranja'},
+  {e:'Apple Juice',   em:'🍎', pron:'/ˈæp.əl dʒuːs/', pt:'Suco de Maçã'},
+  {e:'Milkshake', em:'🥤', pron:'/ˈmɪlk.ʃeɪk/',   pt:'Milk-shake'},
+  {e:'Water',    em:'💧', pron:'/ˈwɔː.tər/',       pt:'Água'},
+  {e:'Lemonade', em:'🍋', pron:'/ˌlem.əˈneɪd/',   pt:'Limonada'},
+];
+const vocabFood = [
+  {e:'Muffin',    em:'🧁', pron:'/ˈmʌf.ɪn/',     pt:'Muffin'},
+  {e:'Cake',      em:'🍰', pron:'/keɪk/',         pt:'Bolo'},
+  {e:'Croissant', em:'🥐', pron:'/ˈkrwæsɒ̃/',     pt:'Croissant'},
+  {e:'Cookie',    em:'🍪', pron:'/ˈkʊk.i/',       pt:'Biscoito'},
+  {e:'Sandwich',  em:'🥪', pron:'/ˈsæn.wɪdʒ/',   pt:'Sanduíche'},
+  {e:'Ice Cream', em:'🍦', pron:'/ˈaɪs kriːm/',   pt:'Sorvete'},
+  {e:'Brownie',   em:'🍫', pron:'/ˈbraʊ.ni/',     pt:'Brownie'},
+  {e:'Toast',     em:'🍞', pron:'/toʊst/',         pt:'Torrada'},
+];
+const vocabItems = [
+  {e:'Menu',     em:'📋', pron:'/ˈmen.juː/',     pt:'Cardápio'},
+  {e:'Table',    em:'🪑', pron:'/ˈteɪ.bəl/',     pt:'Mesa'},
+  {e:'Cup',      em:'☕', pron:'/kʌp/',           pt:'Xícara'},
+  {e:'Glass',    em:'🥛', pron:'/ɡlɑːs/',        pt:'Copo'},
+  {e:'Straw',    em:'🥤', pron:'/strɔː/',        pt:'Canudo'},
+  {e:'Bill',     em:'🧾', pron:'/bɪl/',          pt:'Conta'},
+  {e:'Receipt',  em:'📜', pron:'/rɪˈsiːt/',       pt:'Recibo'},
+  {e:'Tip',      em:'💰', pron:'/tɪp/',           pt:'Gorjeta'},
+  {e:'Barista',  em:'👨‍☕',pron:'/bəˈriː.stə/',    pt:'Barista'},
+  {e:'Order',    em:'✍️', pron:'/ˈɔːr.dər/',      pt:'Pedido'},
+  {e:'Change',   em:'🪙', pron:'/tʃeɪndʒ/',      pt:'Troco'},
+  {e:'Napkin',   em:'🧻', pron:'/ˈnæp.kɪn/',     pt:'Guardanapo'},
+];
+
+const pronList = [
+  ...vocabDrinks.slice(0,6).map(v=>({...v, tip:`${v.pt}`})),
+  ...vocabFood.slice(0,6).map(v=>({...v, tip:`${v.pt}`})),
+];
+
+const phrasesOrdering = [
+  {en:"Can I have a coffee, please?",     pt:"Posso pedir um café, por favor?",        pron:"/kæn aɪ hæv/"},
+  {en:"I'd like a hot chocolate.",        pt:"Eu gostaria de um chocolate quente.",     pron:"/aɪd laɪk/"},
+  {en:"I would like a muffin, please.",   pt:"Eu gostaria de um muffin, por favor.",    pron:"/wʊd laɪk/"},
+  {en:"Can I see the menu, please?",      pt:"Posso ver o cardápio, por favor?",        pron:"/kæn aɪ siː/"},
+  {en:"How much is it?",                  pt:"Quanto custa?",                           pron:"/haʊ mʌtʃ/"},
+  {en:"A table for two, please.",         pt:"Uma mesa para dois, por favor.",          pron:"/ə ˈteɪ.bəl/"},
+  {en:"For here or to go?",               pt:"Aqui ou para viagem?",                    pron:"/fər hɪər/"},
+  {en:"That's all, thank you!",           pt:"É só isso, obrigada!",                    pron:"/ðæts ɔːl/"},
+];
+const phrasesStaff = [
+  {en:"What can I get you?",              pt:"O que posso trazer para você?",           pron:"/wɒt kæn/"},
+  {en:"Are you ready to order?",          pt:"Você está pronto/a para pedir?",          pron:"/ɑː juː/"},
+  {en:"Is that everything?",              pt:"É só isso?",                              pron:"/ɪz ðæt/"},
+  {en:"For here or to go?",               pt:"Aqui ou para viagem?",                    pron:"/fər hɪər/"},
+  {en:"Here is your order!",              pt:"Aqui está seu pedido!",                   pron:"/hɪər ɪz/"},
+  {en:"Enjoy your drink!",                pt:"Aproveite sua bebida!",                   pron:"/ɪnˈdʒɔɪ/"},
+];
+const phrasesPolite = [
+  {en:"Please",                           pt:"Por favor",    pron:"/pliːz/"},
+  {en:"Thank you!",                       pt:"Obrigada!",    pron:"/θæŋk juː/"},
+  {en:"Thank you very much!",             pt:"Muito obrigada!", pron:"/θæŋk juː ˈver.i mʌtʃ/"},
+  {en:"You're welcome!",                  pt:"De nada!",     pron:"/jɔːr ˈwel.kəm/"},
+  {en:"Excuse me!",                       pt:"Com licença!",  pron:"/ɪkˈskjuːz miː/"},
+  {en:"Sorry, could you repeat that?",    pt:"Desculpa, pode repetir?", pron:"/ˈsɒr.i/"},
+];
+
+const matchPairs = [
+  {en:"Coffee ☕",        pt:"Café"},
+  {en:"Tea 🍵",           pt:"Chá"},
+  {en:"Muffin 🧁",        pt:"Muffin"},
+  {en:"Bill 🧾",          pt:"Conta"},
+  {en:"Table 🪑",         pt:"Mesa"},
+  {en:"Straw 🥤",         pt:"Canudo"},
+  {en:"Water 💧",         pt:"Água"},
+  {en:"Cookie 🍪",        pt:"Biscoito"},
+];
+
+const scrambleWords = [
+  {word:"COFFEE",   hint:"A hot drink ☕", emoji:"☕"},
+  {word:"MUFFIN",   hint:"A yummy snack 🧁", emoji:"🧁"},
+  {word:"COOKIE",   hint:"A sweet round snack 🍪", emoji:"🍪"},
+  {word:"SANDWICH", hint:"Bread with filling 🥪", emoji:"🥪"},
+  {word:"LEMONADE", hint:"A cold sweet-sour drink 🍋", emoji:"🍋"},
+  {word:"BARISTA",  hint:"The person who makes your coffee 👨‍☕", emoji:"👨‍☕"},
+  {word:"CROISSANT",hint:"A French pastry 🥐", emoji:"🥐"},
+  {word:"MILKSHAKE",hint:"A cold, creamy drink 🥤", emoji:"🥤"},
+  {word:"MENU",     hint:"A list of food and drinks 📋", emoji:"📋"},
+  {word:"RECEIPT",  hint:"What you get after paying 📜", emoji:"📜"},
+];
+
+const sentences = [
+  {words:["Can","I","have","a","coffee","please","?"], correct:"Can I have a coffee please ?"},
+  {words:["I'd","like","a","muffin","and","orange","juice","."], correct:"I'd like a muffin and orange juice ."},
+  {words:["How","much","is","it","?"], correct:"How much is it ?"},
+  {words:["A","table","for","two","please","."], correct:"A table for two please ."},
+  {words:["Thank","you","very","much","!"], correct:"Thank you very much !"},
+  {words:["Can","I","see","the","menu","please","?"], correct:"Can I see the menu please ?"},
+];
+
+const quizData = [
+  {q:"What does 'How much is it?' mean?", opts:["Quanto custa?","Onde fica?","O que é isso?","Como se faz?"], a:0},
+  {q:"How do you say 'por favor' in English?", opts:["Sorry","Thank you","Please","Excuse me"], a:2},
+  {q:"What is a 'barista'?", opts:["A type of coffee","A café item","The person who makes drinks","A dessert"], a:2},
+  {q:"How do you order a coffee politely?", opts:["Give me coffee!","Coffee now!","Can I have a coffee, please?","I want coffee."], a:2},
+  {q:"What does 'bill' mean in a café?", opts:["A person's name","The account/check to pay","A type of drink","A type of food"], a:1},
+  {q:"What does 'For here or to go?' mean?", opts:["Aqui ou para levar?","O que você quer?","Você quer mais?","Isso é tudo?"], a:0},
+  {q:"How do you say 'De nada!' in English?", opts:["Excuse me","Please","Sorry","You're welcome!"], a:3},
+  {q:"Which is the correct sentence?", opts:["I like would a tea","Would a tea I like","I'd like a tea, please","Tea please I'd like"], a:2},
+];
+
+const baristaQuestions = [
+  {q:"What can I get you today?", pt:"O que posso trazer para você hoje?", hint:"Answer: 'Can I have [drink], please?' or 'I'd like [food]...'"},
+  {q:"Would you like a small, medium or large?", pt:"Você quer pequeno, médio ou grande?", hint:"Answer: 'Medium, please!' or 'Large, please!'"},
+  {q:"Is that everything?", pt:"É só isso?", hint:"Answer: 'Yes, that's all!' or 'No, I'd also like...'"},
+  {q:"For here or to go?", pt:"Aqui ou para viagem?", hint:"Answer: 'For here, please.' or 'To go, please!'"},
+  {q:"Would you like anything else?", pt:"Gostaria de mais alguma coisa?", hint:"Answer: 'No, thank you!' or 'Yes, can I also have...?'"},
+  {q:"How would you like to pay — cash or card?", pt:"Como vai pagar — dinheiro ou cartão?", hint:"Answer: 'By card, please.' or 'Cash, please.'"},
+  {q:"What's your name for the order?", pt:"Qual é o seu nome para o pedido?", hint:"Answer: 'My name is [your name].'"},
+  {q:"Have a great day!", pt:"Tenha um ótimo dia!", hint:"Answer: 'You too! Thank you so much!'"},
+];
+
+const fillBlanks = [
+  {sentence:"Can I _____ a coffee, please?",      answer:"have",  blank:"have"},
+  {sentence:"I'd _____ a hot chocolate.",         answer:"like",  blank:"like"},
+  {sentence:"How _____ is it?",                   answer:"much",  blank:"much"},
+  {sentence:"That's all, thank you! _____ here you go!", answer:"here", blank:"here"},
+  {sentence:"Can I take your _____?",             answer:"order", blank:"order"},
+  {sentence:"Is _____ everything?",               answer:"that",  blank:"that"},
+  {sentence:"For here or to _____?",              answer:"take",  blank:"take"},
+  {sentence:"A table for two, _____.",            answer:"please",blank:"please"},
+];
+
+const translateList = [
+  {pt:"Por favor, posso pedir um bolo?",  en:"Can I have a cake, please?"},
+  {pt:"Quanto custa o suco de laranja?",  en:"How much is the orange juice?"},
+  {pt:"Uma mesa para dois, por favor.",   en:"A table for two, please."},
+  {pt:"Obrigada! Até logo!",              en:"Thank you! See you later!"},
+  {pt:"Posso ver o cardápio?",            en:"Can I see the menu?"},
+];
+
+// ════════════════════════════════════════
+// XP SYSTEM
+// ════════════════════════════════════════
+let xp = 0;
+const xpDone = {};
+function addXP(amount, key) {
+  if (xpDone[key]) { showNotif('Already earned that XP! 😊'); return; }
+  xpDone[key] = true;
+  xp = Math.min(200, xp + amount);
+  document.getElementById('xp-val').textContent = xp;
+  document.getElementById('xp-bar').style.width = (xp/200*100) + '%';
+  let label = '🔰 Beginner Barista';
+  if (xp >= 50)  label = '☕ Café Explorer';
+  if (xp >= 100) label = '🥐 Junior Barista';
+  if (xp >= 150) label = '🧁 Café Star';
+  if (xp >= 200) label = '🏆 Café Master!';
+  document.getElementById('level-label').textContent = label;
+  document.getElementById('xp-hint').textContent = '🎉 +'+ amount +' XP earned!';
+  showNotif('⭐ +' + amount + ' XP! ' + label);
+  if (xp >= 200) { setTimeout(()=>showReward('🎉🎊⭐','Café Master!','You completed the whole lesson! You are AMAZING, Duda! 🌟'), 500); launchConfetti(); }
+}
+
+// ════════════════════════════════════════
+// TABS
+// ════════════════════════════════════════
+function switchTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ════════════════════════════════════════
+// VOCAB GRID BUILDER
+// ════════════════════════════════════════
+function buildVocabGrid(data, gridId) {
+  const g = document.getElementById(gridId);
+  if (!g) return;
+  let learned = 0;
+  data.forEach((v,i) => {
+    const d = document.createElement('div');
+    d.className = 'vocab-card';
+    d.innerHTML = `<span class="emoji">${v.em}</span><span class="word">${v.e}</span><span class="pron">${v.pron}</span><span class="pt">${v.pt}</span>`;
+    d.onclick = function() {
+      if (!this.classList.contains('clicked')) {
+        this.classList.add('clicked');
+        speak(v.e);
+        showNotif('🔊 ' + v.e + ' = ' + v.pt);
+      }
+    };
+    g.appendChild(d);
+  });
+}
+
+function checkVocabDone() {
+  addXP(30, 'vocab');
+  showReward('📚🌟🎉', 'Vocabulary Master!', 'You learned all the café words, Duda! Incrível! 🌈');
+}
+
+// ════════════════════════════════════════
+// PRONUNCIATION GRID
+// ════════════════════════════════════════
+function buildPronGrid() {
+  const g = document.getElementById('pron-grid');
+  if (!g) return;
+  pronList.forEach(v => {
+    const d = document.createElement('div');
+    d.className = 'pron-item';
+    d.innerHTML = `<span class="big-emoji">${v.em}</span>
+      <div class="pron-info">
+        <div class="pron-word">${v.e}</div>
+        <div class="pron-ipa">${v.pron}</div>
+        <div class="pron-tip">${v.pt}</div>
+        <button class="speak-btn" onclick="speak('${v.e}')">🔊 Hear it</button>
+      </div>`;
+    g.appendChild(d);
+  });
+}
+
+// ════════════════════════════════════════
+// WEB SPEECH API
+// ════════════════════════════════════════
+function speak(text) {
+  if (!('speechSynthesis' in window)) { showNotif('🔊 ' + text); return; }
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-US'; u.rate = 0.85; u.pitch = 1.1;
+  window.speechSynthesis.speak(u);
+}
+
+// ════════════════════════════════════════
+// PHRASES BUILDER
+// ════════════════════════════════════════
+function buildPhraseList(data, elId) {
+  const el = document.getElementById(elId);
+  if (!el) return;
+  data.forEach(p => {
+    const d = document.createElement('div');
+    d.className = 'phrase-row';
+    d.innerHTML = `<div>
+        <div class="en">${p.en} <span class="pron-badge">${p.pron}</span></div>
+        <button class="speak-btn" style="margin-top:6px;" onclick="speak('${p.en.replace(/'/g,"\\'")}')">🔊 Hear it</button>
+      </div>
+      <div class="pt">${p.pt}</div>`;
+    el.appendChild(d);
+  });
+}
+
+// ════════════════════════════════════════
+// MEMORY GAME
+// ════════════════════════════════════════
+const memPairs = [
+  {word:'Coffee',    sym:'☕'},
+  {word:'Muffin',    sym:'🧁'},
+  {word:'Tea',       sym:'🍵'},
+  {word:'Cookie',    sym:'🍪'},
+  {word:'Water',     sym:'💧'},
+  {word:'Cake',      sym:'🍰'},
+];
+let memFlipped=[], memMatched=0, memLocked=false;
+function initMemory() {
+  memFlipped=[]; memMatched=0; memLocked=false;
+  document.getElementById('mem-pairs').textContent='0';
+  const grid = document.getElementById('memory-grid');
+  grid.innerHTML='';
+  const cards = [];
+  memPairs.forEach(p => {
+    cards.push({type:'word',label:p.word, match:p.word});
+    cards.push({type:'sym', label:p.sym,  match:p.word});
+  });
+  cards.sort(()=>Math.random()-0.5);
+  cards.forEach((c,i)=>{
+    const div = document.createElement('div');
+    div.className='mem-card';
+    div.dataset.match=c.match;
+    div.dataset.idx=i;
+    div.innerHTML=`<span class="front-icon">❓</span><span class="back">${c.label}</span>`;
+    div.onclick=()=>flipMem(div);
+    grid.appendChild(div);
+  });
+}
+function flipMem(card) {
+  if (memLocked || card.classList.contains('flipped') || card.classList.contains('matched')) return;
+  card.classList.add('flipped');
+  memFlipped.push(card);
+  if (memFlipped.length===2) {
+    memLocked=true;
+    setTimeout(()=>{
+      if (memFlipped[0].dataset.match===memFlipped[1].dataset.match) {
+        memFlipped.forEach(c=>c.classList.add('matched'));
+        memMatched++;
+        document.getElementById('mem-pairs').textContent=memMatched;
+        if (memMatched===memPairs.length) { addXP(20,'memory'); showReward('🃏🌟🎊','Memory Master!','Perfect match! You have a great memory, Duda! 🧠'); }
+      } else {
+        memFlipped.forEach(c=>c.classList.remove('flipped'));
+      }
+      memFlipped=[]; memLocked=false;
+    }, 900);
+  }
+}
+
+// ════════════════════════════════════════
+// MATCH GAME
+// ════════════════════════════════════════
+let matchSelected=null, matchScore=0;
+function initMatch() {
+  matchSelected=null; matchScore=0;
+  document.getElementById('match-score').textContent='Score: 0 / '+matchPairs.length;
+  const left=document.getElementById('match-left');
+  const right=document.getElementById('match-right');
+  left.innerHTML=''; right.innerHTML='';
+  const enItems=[...matchPairs].sort(()=>Math.random()-0.5);
+  const ptItems=[...matchPairs].sort(()=>Math.random()-0.5);
+  enItems.forEach(p=>{
+    const d=document.createElement('div'); d.className='match-item';
+    d.textContent=p.en; d.dataset.key=p.en; d.dataset.side='en';
+    d.onclick=()=>selectMatch(d,'en');
+    left.appendChild(d);
+  });
+  ptItems.forEach(p=>{
+    const d=document.createElement('div'); d.className='match-item';
+    d.textContent=p.pt; d.dataset.key=p.en; d.dataset.side='pt';
+    d.onclick=()=>selectMatch(d,'pt');
+    right.appendChild(d);
+  });
+}
+function selectMatch(el, side) {
+  if (el.classList.contains('matched')) return;
+  if (!matchSelected) {
+    document.querySelectorAll('.match-item').forEach(i=>i.classList.remove('selected'));
+    el.classList.add('selected'); matchSelected=el; return;
+  }
+  if (matchSelected.dataset.side===side) {
+    matchSelected.classList.remove('selected');
+    el.classList.add('selected'); matchSelected=el; return;
+  }
+  if (matchSelected.dataset.key===el.dataset.key) {
+    matchSelected.classList.remove('selected'); matchSelected.classList.add('matched');
+    el.classList.add('matched');
+    matchScore++; document.getElementById('match-score').textContent='Score: '+matchScore+' / '+matchPairs.length;
+    if (matchScore===matchPairs.length) { addXP(20,'match'); showReward('🔗✨🌟','Perfect Match!','All pairs found! Incredible, Duda! 💜'); }
+  } else {
+    [matchSelected,el].forEach(i=>{ i.classList.add('wrong'); setTimeout(()=>{ i.classList.remove('wrong','selected'); },700); });
+  }
+  matchSelected=null;
+}
+
+// ════════════════════════════════════════
+// WORD SCRAMBLE
+// ════════════════════════════════════════
+let scrambleIdx=0;
+function buildScramble() {
+  const w=scrambleWords[scrambleIdx];
+  document.getElementById('scramble-hint').textContent=w.hint;
+  document.getElementById('scramble-answer').style.display='none';
+  document.getElementById('scramble-answer').textContent='';
+  document.getElementById('scramble-input').value='';
+  document.getElementById('scramble-input').style.borderColor='';
+  document.getElementById('scramble-input').style.background='';
+  const shuffled=[...w.word].sort(()=>Math.random()-0.5);
+  const wrap=document.getElementById('scrambled-word');
+  wrap.innerHTML='';
+  shuffled.forEach(l=>{
+    const t=document.createElement('div'); t.className='letter-tile'; t.textContent=l;
+    wrap.appendChild(t);
+  });
+}
+function checkScramble() {
+  const ans=document.getElementById('scramble-input').value.trim().toUpperCase();
+  const inp=document.getElementById('scramble-input');
+  if (ans===scrambleWords[scrambleIdx].word) {
+    inp.style.borderColor='#10b981'; inp.style.background='#d1fae5';
+    addXP(15,'scramble_'+scrambleIdx);
+    showNotif('🎉 Correct! ' + scrambleWords[scrambleIdx].word);
+  } else {
+    inp.style.borderColor='#ef4444'; inp.style.background='#fee2e2';
+    showNotif('❌ Try again! The word has ' + scrambleWords[scrambleIdx].word.length + ' letters.');
+  }
+}
+function nextScramble() { scrambleIdx=(scrambleIdx+1)%scrambleWords.length; buildScramble(); }
+function revealScramble() {
+  const a=document.getElementById('scramble-answer');
+  a.textContent=scrambleWords[scrambleIdx].emoji+' '+scrambleWords[scrambleIdx].word;
+  a.style.display='block';
+}
+
+// ════════════════════════════════════════
+// SENTENCE ORDER GAME
+// ════════════════════════════════════════
+let sentIdx=0, sentPlaced=[];
+function buildSentenceGame() {
+  sentPlaced=[];
+  const sent=sentences[sentIdx];
+  const area=document.getElementById('sentence-game-area');
+  area.innerHTML='';
+  document.getElementById('sentence-feedback').textContent='';
+  // chips bank
+  const bank=document.createElement('div'); bank.className='word-chips'; bank.id='word-bank';
+  const shuffled=[...sent.words].sort(()=>Math.random()-0.5);
+  shuffled.forEach((w,i)=>{
+    const c=document.createElement('div'); c.className='word-chip'; c.textContent=w; c.dataset.word=w; c.dataset.idx=i;
+    c.onclick=()=>placeWord(c);
+    bank.appendChild(c);
+  });
+  // slot
+  const slot=document.createElement('div'); slot.className='answer-slot'; slot.id='sent-slot';
+  const lbl=document.createElement('div'); lbl.style.cssText='font-size:12px;font-weight:800;color:var(--purple);margin-bottom:6px;letter-spacing:1px;';
+  lbl.textContent='YOUR SENTENCE 👇';
+  area.appendChild(lbl); area.appendChild(slot); area.appendChild(bank);
+}
+function placeWord(chip) {
+  if (chip.classList.contains('used')) return;
+  chip.classList.add('used');
+  sentPlaced.push(chip.dataset.word);
+  const slot=document.getElementById('sent-slot');
+  const pc=document.createElement('div'); pc.className='placed-chip'; pc.textContent=chip.dataset.word;
+  pc.dataset.word=chip.dataset.word; pc.dataset.chipIdx=chip.dataset.idx;
+  pc.onclick=()=>removeWord(pc, chip);
+  slot.appendChild(pc);
+}
+function removeWord(pc, chip) {
+  sentPlaced.splice(sentPlaced.indexOf(pc.dataset.word),1);
+  pc.remove(); chip.classList.remove('used');
+}
+function checkSentence() {
+  const fb=document.getElementById('sentence-feedback');
+  const correct=sentences[sentIdx].correct;
+  const attempt=sentPlaced.join(' ');
+  if (attempt===correct) {
+    fb.innerHTML='<span style="color:#10b981;">✅ Correct! 🎉 Amazing, Duda!</span>';
+    addXP(20,'sentence_'+sentIdx);
+  } else {
+    fb.innerHTML='<span style="color:#ef4444;">❌ Not quite! Try again — or check the order!</span>';
+  }
+}
+function nextSentence() { sentIdx=(sentIdx+1)%sentences.length; buildSentenceGame(); }
+function resetSentence() { buildSentenceGame(); }
+
+// ════════════════════════════════════════
+// QUIZ
+// ════════════════════════════════════════
+let quizIdx=0, quizCorrect=0;
+function buildQuiz() {
+  const q=quizData[quizIdx];
+  const area=document.getElementById('quiz-area');
+  area.innerHTML='';
+  const qbox=document.createElement('div'); qbox.style.cssText='background:var(--lav1);border-radius:16px;padding:20px;border:2px solid var(--lav3);';
+  qbox.innerHTML=`<div style="font-weight:800;font-size:17px;color:var(--deep);margin-bottom:16px;"> Q${quizIdx+1}. ${q.q}</div>`;
+  q.opts.forEach((o,i)=>{
+    const b=document.createElement('button');
+    b.style.cssText='display:block;width:100%;text-align:left;background:white;border:2.5px solid var(--lav3);border-radius:12px;padding:12px 16px;font-size:15px;font-weight:700;color:var(--textd);margin-bottom:8px;cursor:pointer;transition:all 0.2s;font-family:Nunito,sans-serif;';
+    b.textContent=(i===0?'A':i===1?'B':i===2?'C':'D')+'. '+o;
+    b.onmouseover=()=>{ if(!b.disabled) b.style.background='var(--lav1)'; };
+    b.onmouseout=()=>{ if(!b.disabled) b.style.background='white'; };
+    b.onclick=()=>{
+      document.querySelectorAll('#quiz-area button').forEach(x=>x.disabled=true);
+      if (i===q.a) {
+        b.style.background='var(--mint2)'; b.style.borderColor='#10b981'; b.style.color='#065f46';
+        quizCorrect++; showNotif('✅ Correct! 🎉');
+      } else {
+        b.style.background='#fee2e2'; b.style.borderColor='#ef4444'; b.style.color='#dc2626';
+        document.querySelectorAll('#quiz-area button')[q.a].style.background='var(--mint2)';
+        document.querySelectorAll('#quiz-area button')[q.a].style.borderColor='#10b981';
+        showNotif('❌ The answer was: ' + q.opts[q.a]);
+      }
+      document.getElementById('quiz-score').textContent='Score: '+quizCorrect+' / '+(quizIdx+1);
+    };
+    qbox.appendChild(b);
+  });
+  area.appendChild(qbox);
+}
+function nextQuiz() {
+  quizIdx=(quizIdx+1)%quizData.length;
+  buildQuiz();
+  if (quizIdx===0 && quizCorrect>0) { addXP(25,'quiz'); }
+}
+
+// ════════════════════════════════════════
+// FILL BLANKS
+// ════════════════════════════════════════
+function buildFillBlanks() {
+  const list=document.getElementById('fillblank-list');
+  if (!list) return;
+  fillBlanks.forEach((item,i)=>{
+    const d=document.createElement('div'); d.className='fillblank-q';
+    d.innerHTML=`<p><span style="font-family:'Fredoka One',cursive;color:var(--deep);font-size:18px;">${i+1}.</span> ${item.sentence}</p>
+      <input type="text" id="fb-${i}" placeholder="Type here..." autocomplete="off">
+      <div class="hint">💡 Word starts with: <strong>${item.answer[0].toUpperCase()}</strong></div>
+      <div class="answer-reveal" id="fb-ans-${i}">✅ Answer: ${item.answer}</div>`;
+    list.appendChild(d);
+  });
+}
+function checkFillBlanks() {
+  let correct=0;
+  fillBlanks.forEach((item,i)=>{
+    const inp=document.getElementById('fb-'+i);
+    const ans=document.getElementById('fb-ans-'+i);
+    if (inp.value.trim().toLowerCase()===item.answer.toLowerCase()) {
+      inp.className+=' correct'; ans.style.display='block'; correct++;
+    } else {
+      inp.className+=' wrong'; ans.style.display='block';
+    }
+  });
+  document.getElementById('fillblank-result').innerHTML=
+    correct===fillBlanks.length
+      ? '<span style="color:#10b981">🎉 Perfect! All correct! +20 XP</span>'
+      : `<span style="color:var(--purple)">You got ${correct}/${fillBlanks.length} — check the revealed answers and try again!</span>`;
+  if (correct===fillBlanks.length) addXP(20,'fillblanks');
+}
+function resetFillBlanks() {
+  fillBlanks.forEach((_,i)=>{
+    const inp=document.getElementById('fb-'+i);
+    inp.value=''; inp.className='';
+    document.getElementById('fb-ans-'+i).style.display='none';
+  });
+  document.getElementById('fillblank-result').textContent='';
+}
+
+// ════════════════════════════════════════
+// TRANSLATE EXERCISE
+// ════════════════════════════════════════
+function buildTranslate() {
+  const list=document.getElementById('translate-list');
+  if (!list) return;
+  translateList.forEach((item,i)=>{
+    const d=document.createElement('div'); d.className='write-box'; d.style.marginBottom='12px';
+    d.innerHTML=`<div class="write-prompt">${i+1}. Translate: <strong>"${item.pt}"</strong></div>
+      <input type="text" id="tr-${i}" placeholder="Write in English..." style="width:100%;border:2px solid var(--lav3);border-radius:12px;padding:10px 14px;font-size:15px;font-family:Nunito,sans-serif;font-weight:600;color:var(--textd);background:var(--lav1);">
+      <div id="tr-fb-${i}" style="margin-top:6px;font-size:13px;font-weight:800;display:none;"></div>`;
+    list.appendChild(d);
+  });
+}
+function checkTranslations() {
+  let correct=0;
+  translateList.forEach((item,i)=>{
+    const val=document.getElementById('tr-'+i).value.trim().toLowerCase();
+    const fb=document.getElementById('tr-fb-'+i);
+    fb.style.display='block';
+    const keywords=item.en.toLowerCase().replace(/[?!.,]/g,'').split(' ').filter(w=>w.length>2);
+    const hits=keywords.filter(k=>val.includes(k)).length;
+    if (hits>=Math.ceil(keywords.length*0.7)) {
+      fb.innerHTML='<span style="color:#10b981">✅ Great! Model answer: <em>'+item.en+'</em></span>'; correct++;
+    } else {
+      fb.innerHTML='<span style="color:#ef4444">❌ Try again! Model answer: <em>'+item.en+'</em></span>';
+    }
+  });
+  if (correct>=3) addXP(20,'translate');
+  showNotif(correct+'/'+translateList.length+' correct! 🌟');
+}
+
+// ════════════════════════════════════════
+// WRITING SAVE
+// ════════════════════════════════════════
+function saveWrite(id, savedId) {
+  const val=document.getElementById(id).value;
+  if (val.trim()) {
+    localStorage.setItem('duda_'+id, val);
+    const s=document.getElementById(savedId);
+    s.style.display='block'; setTimeout(()=>s.style.display='none', 3000);
+    addXP(15,'write_'+id);
+    showNotif('✅ Saved! Amazing writing! 🌟');
+  }
+}
+
+// ════════════════════════════════════════
+// BARISTA ROLE PLAY
+// ════════════════════════════════════════
+let baristaIdx=0;
+function randomBarista() {
+  baristaIdx=Math.floor(Math.random()*baristaQuestions.length);
+  const q=baristaQuestions[baristaIdx];
+  document.getElementById('barista-q-text').textContent=q.q;
+  document.getElementById('barista-q-pt').textContent=q.pt;
+  document.getElementById('barista-hint').style.display='none';
+  speak(q.q);
+}
+function showBaristaHint() {
+  const h=document.getElementById('barista-hint');
+  h.textContent='💡 '+baristaQuestions[baristaIdx].hint;
+  h.style.display='block';
+}
+
+// ════════════════════════════════════════
+// TIMER
+// ════════════════════════════════════════
+let timerInterval=null, timerSecs=60;
+function setTimer(s) { clearInterval(timerInterval); timerInterval=null; timerSecs=s; updateTimer(); document.getElementById('timer-display').classList.remove('warn'); }
+function updateTimer() {
+  const m=String(Math.floor(timerSecs/60)).padStart(2,'0');
+  const s=String(timerSecs%60).padStart(2,'0');
+  document.getElementById('timer-display').textContent=m+':'+s;
+  document.getElementById('timer-display').classList.toggle('warn', timerSecs<=10);
+}
+function startTimer() {
+  if (timerInterval) return;
+  timerInterval=setInterval(()=>{ if (timerSecs<=0) { clearInterval(timerInterval); timerInterval=null; showNotif('⏰ Time is up!'); return; } timerSecs--; updateTimer(); },1000);
+}
+function pauseTimer() { clearInterval(timerInterval); timerInterval=null; }
+function resetTimer()  { clearInterval(timerInterval); timerInterval=null; timerSecs=60; updateTimer(); document.getElementById('timer-display').classList.remove('warn'); }
+
+// ════════════════════════════════════════
+// SELF CHECK
+// ════════════════════════════════════════
+function checkSelf() {
+  let n=0; for(let i=1;i<=6;i++) if(document.getElementById('sc'+i).checked) n++;
+  const msgs=['Keep trying! You can do it! 💪','Good start! Practice more! 🌟','Nice work! Getting better! 👍','Great job! Almost there! 🎉','Excellent! You are a star! ⭐','PERFECT! You are a Café Master! 🏆'];
+  document.getElementById('self-result').textContent=msgs[n]+' ('+n+'/6)';
+  document.getElementById('self-result').style.display='block';
+  if (n>=4) addXP(20,'selfcheck');
+}
+
+// ════════════════════════════════════════
+// NOTIFICATION & REWARD
+// ════════════════════════════════════════
+function showNotif(msg) {
+  const n=document.getElementById('notif');
+  n.textContent=msg; n.style.display='block'; n.style.opacity='1';
+  setTimeout(()=>{ n.style.opacity='0'; setTimeout(()=>n.style.display='none',400); },2200);
+}
+function showReward(stars, title, msg) {
+  document.getElementById('reward-stars').textContent=stars;
+  document.getElementById('reward-title').textContent=title;
+  document.getElementById('reward-msg').textContent=msg;
+  document.getElementById('reward-pop').classList.add('show');
+  document.getElementById('overlay').style.display='block';
+}
+function closeReward() {
+  document.getElementById('reward-pop').classList.remove('show');
+  document.getElementById('overlay').style.display='none';
+}
+
+// ════════════════════════════════════════
+// CONFETTI
+// ════════════════════════════════════════
+function launchConfetti() {
+  const colors=['#b68fff','#e879f9','#fde68a','#6ee7b7','#a5f3fc','#fca5a5'];
+  const c=document.getElementById('confetti');
+  for (let i=0;i<80;i++) {
+    const p=document.createElement('div');
+    p.className='confetti-piece';
+    p.style.left=Math.random()*100+'vw';
+    p.style.top='-20px';
+    p.style.background=colors[Math.floor(Math.random()*colors.length)];
+    p.style.animationDelay=Math.random()*2+'s';
+    p.style.animationDuration=(2+Math.random()*2)+'s';
+    p.style.transform='rotate('+Math.random()*360+'deg)';
+    c.appendChild(p);
+    setTimeout(()=>p.remove(), 4500);
+  }
+}
+
+// ════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════
+window.addEventListener('load', ()=>{
+  buildVocabGrid(vocabDrinks, 'grid-drinks');
+  buildVocabGrid(vocabFood,   'grid-food');
+  buildVocabGrid(vocabItems,  'grid-items');
+  buildPronGrid();
+  buildPhraseList(phrasesOrdering, 'phrases-ordering');
+  buildPhraseList(phrasesStaff,    'phrases-staff');
+  buildPhraseList(phrasesPolite,   'phrases-polite');
+  initMemory();
+  initMatch();
+  buildScramble();
+  buildSentenceGame();
+  buildQuiz();
+  buildFillBlanks();
+  buildTranslate();
+
+  // restore saved writings
+  ['dialogue-write','order-write','essay-write'].forEach(id=>{
+    const s=localStorage.getItem('duda_'+id);
+    if (s) document.getElementById(id).value=s;
+  });
+});
+</script>
+</body>
+</html>
